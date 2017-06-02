@@ -1,50 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.fjnu.edu.helper.view.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_menu"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.fjnu.edu.helper.activity.MainActivity">
-    <FrameLayout
-        android:id="@+id/main_content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/main_bottom_layout"/>
+    xmlns:my="http://schemas.android.com/apk/res/com.fjnu.edu.helper"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:scrollbars="none"
+    my:rightPadding="150dp" >
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/main_bottom_layout"
-        android:padding="5dp"
-        android:background="@drawable/bottom_outline">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:id="@+id/main_button_food"
-            android:text="@string/main_button_food"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:id="@+id/main_button_recipe"
-            android:text="@string/main_button_recipe"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:id="@+id/main_button_note"
-            android:text="@string/main_button_note"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:id="@+id/main_button_person"
-            android:text="@string/main_button_person"/>
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <include layout="@layout/layout_person" />
+        <include layout="@layout/layout_main"/>
     </LinearLayout>
-</RelativeLayout>
+
+</com.fjnu.edu.helper.view.SlidingMenu>
