@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    主界面控件内容
+    -->
+    <string name="main_button_food">食材</string>
+    <string name="main_button_recipe">食谱</string>
+    <string name="main_button_note">笔记</string>
+    <string name="main_button_person">个人</string>
+
+    <!--
+    食材界面控件内容
+    -->
+    <string name="foodmain_button_information">消息</string>
+    <string name="foodmain_button_QRcode">扫一扫</string>
+
+    <string name="foodmain_textview_search">输入食材关键字</string>
+    <string name="foodmain_textview_myfood">我的食材</string>
+    <string name="foodmain_textview_recommend">推荐菜谱</string>
+
+    <!--
+    菜单内容
+    -->
+    <string name="menu_food_edit_add">添加</string>
+    <string name="menu_food_edit_edit">编辑</string>
+
+    <!--
+    菜谱界面控件内容
+    -->
+    <string name="recipemain_button_information">消息</string>
+    <string name="recipemain_button_QRcode">扫一扫</string>
+
+    <string name="recipemain_textview_search">点击搜索食材菜谱信息</string>
+
+    <!--
+    笔记界面控件内容
+    -->
+    <string name="notemain_title">笔记</string>
+
+    <string name="notemain_button_information">消息</string>
+
+</resources>
