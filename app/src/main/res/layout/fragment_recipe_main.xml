@@ -34,7 +34,7 @@
             android:gravity="center|left"
             android:background="@color/white"
             android:iconifiedByDefault="false"
-            android:text="@string/foodmain_textview_search"
+            android:text="@string/recipemain_textview_search"
             />
     </RelativeLayout>
     <RelativeLayout
