@@ -56,4 +56,13 @@
     <string name="db_name">/data/data/com.fjnu.edu.helper/databases/helper.db</string>
     <string name="db_path">/data/data/com.fjnu.edu.helper/databases</string>
 
+    <!--
+    添加食材界面控件内容
+    -->
+    <string name="addfood_title">添加食材</string>
+
+    <string name="addfood_searchview_hint">输入食材关键字</string>
+
+
+
 </resources>
