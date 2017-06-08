@@ -2,6 +2,7 @@ package com.fjnu.edu.helper.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.fjnu.edu.helper.R;
+import com.fjnu.edu.helper.activity.AddFoodActivity;
 
 /**
  * Created by ZhouShiqiao on 2017/5/29 0029.
@@ -28,6 +30,11 @@ public class FoodMainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    public void onResume() {
+        super.onResume();
+
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +67,8 @@ public class FoodMainFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.foodmain_edit_add:
+                        Intent intent = new Intent(context, AddFoodActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.foodmain_edit_edit:
                         break;
