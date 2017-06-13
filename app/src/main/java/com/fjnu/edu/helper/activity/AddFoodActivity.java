@@ -20,6 +20,7 @@ import com.fjnu.edu.helper.R;
 import com.fjnu.edu.helper.adapter.AddFoodGridAdapter;
 import com.fjnu.edu.helper.datebase.DBManager;
 import com.fjnu.edu.helper.food.AddFoodInformation;
+import com.fjnu.edu.helper.food.Food;
 
 import java.util.ArrayList;
 
@@ -64,7 +65,7 @@ public class AddFoodActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AddFoodInformation afi = (AddFoodInformation) adapter.getItem(position);
-                showdialog();
+                showdialog(afi);
             }
         });
     }
@@ -77,7 +78,7 @@ public class AddFoodActivity extends AppCompatActivity {
         grid.setAdapter(adapter);
     }
 
-    private void showdialog(){
+    private void showdialog(AddFoodInformation afi){
         final Dialog dialog = new Dialog(this, R.style.Theme_Light_Dialog);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_food,null);
         Window window = dialog.getWindow();
@@ -92,6 +93,9 @@ public class AddFoodActivity extends AppCompatActivity {
         Button confirm = (Button) dialogView.findViewById(R.id.add_food_button_confirm);
         Button cancel = (Button) dialogView.findViewById(R.id.add_food_button_cancel);
         dialog.show();
+
+        Food food = mgr.QueryFoodByNo(afi.getId());
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

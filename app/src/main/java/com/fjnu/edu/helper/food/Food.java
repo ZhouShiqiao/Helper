@@ -1,26 +1,22 @@
 package com.fjnu.edu.helper.food;
 
 /**
- * Created by ZhouShiqiao on 2017/5/30 0030.
+ * Created by Administrator on 2017/6/13 0013.
  */
 
 public class Food {
     private String mno;
     private String name;
-    private int storage;
-    private String addtime;
-    private double freshness;
-    private double residue;
-    private String unit;
+    private int storage1;
+    private int storage2;
+    private int storage3;
 
-    public Food(String mno, String name, int storage, String addtime, double residue, String unit) {
+    public Food(String mno, String name, int storage1, int storage2, int storage3) {
         this.mno = mno;
         this.name = name;
-        this.storage = storage;
-        this.addtime = addtime;
-        this.residue = residue;
-        this.unit = unit;
-        this.setFreshness();
+        this.storage1 = storage1;
+        this.storage2 = storage2;
+        this.storage3 = storage3;
     }
 
     public String getMno() {
@@ -39,43 +35,27 @@ public class Food {
         this.name = name;
     }
 
-    public int getStorage() {
-        return storage;
+    public int getStorage1() {
+        return storage1;
     }
 
-    public void setStorage(int storage) {
-        this.storage = storage;
+    public void setStorage1(int storage1) {
+        this.storage1 = storage1;
     }
 
-    public String getAddtime() {
-        return addtime;
+    public int getStorage2() {
+        return storage2;
     }
 
-    public void setAddtime(String addtime) {
-        this.addtime = addtime;
+    public void setStorage2(int storage2) {
+        this.storage2 = storage2;
     }
 
-    public double getFreshness() {
-        return freshness;
+    public int getStorage3() {
+        return storage3;
     }
 
-    public void setFreshness() {
-
-    }
-
-    public double getResidue() {
-        return residue;
-    }
-
-    public void setResidue(double residue) {
-        this.residue = residue;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setStorage3(int storage3) {
+        this.storage3 = storage3;
     }
 }
