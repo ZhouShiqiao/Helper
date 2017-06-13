@@ -63,6 +63,9 @@
 
     <string name="addfood_searchview_hint">输入食材关键字</string>
 
+    <string name="addfood_dialog_confirm">添加</string>
+    <string name="addfood_dialog_cancel">取消</string>
+
 
 
 </resources>
