@@ -34,7 +34,6 @@
             android:layout_toRightOf="@+id/main_button_QRcode"
             android:layout_toLeftOf="@id/main_button_information"
             android:id="@+id/main_textview_search"
-            android:queryHint="@string/foodmain_textview_search"
             android:gravity="center|left"
             android:background="@color/white"
             android:iconifiedByDefault="false"
@@ -74,6 +73,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="15dp"
-        android:backgroundTint="?attr/colorPrimary"
+        app:backgroundTint="?attr/colorPrimary"
         />
 </RelativeLayout>

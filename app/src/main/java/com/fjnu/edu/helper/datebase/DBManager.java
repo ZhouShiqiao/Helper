@@ -1,5 +1,6 @@
 package com.fjnu.edu.helper.datebase;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -39,21 +40,23 @@ public class DBManager {
     }
 
     public void InsertMyfood(MyFood food) {
-        String sql = null;
-        sql = "insert into myfood(No,Quantity,Inputdate,Unit)" +
-                "values ('" + food.getMno() + "'," + food.getResidue() +
-                ",datetime('now', 'localtime')," + food.getUnit() + "')";
-        db.execSQL(sql);
+        ContentValues cv = new ContentValues();
+        cv.put("No", food.getMno());
+        cv.put("Quantity", food.getResidue());
+        cv.put("Position", food.getPosition());
+        cv.put("Unit", food.getUnit());
+        cv.put("InputDate", "datetime('now', 'localtime'))");
+        db.insert("myfood", null, cv);
     }
 
-    public void UpdateMyfood(MyFood food){
-        String sql=null;
-        sql="update information set flag = 'T' where information_no = ";
+    public void UpdateMyfood(MyFood food) {
+        String sql = null;
+        sql = "update information set flag = 'T' where information_no = ";
         db.execSQL(sql);
     }
 
     public Food QueryFoodByNo(String mno) {
-        String sql = "select * from food where materialName = '" + mno + "'";
+        String sql = "select * from food where mno = '" + mno + "'";
         Cursor c = db.rawQuery(sql, null);
         Food food = null;
         while (c.moveToNext()) {
@@ -64,5 +67,27 @@ public class DBManager {
             food = new Food(mno, name, storage1, storage2, storage3);
         }
         return food;
+    }
+
+    private void update(SQLiteDatabase db) {
+//实例化内容值 ContentValues values = new ContentValues();
+//在values中添加内容
+        ContentValues values = new ContentValues();
+        values.put("snumber", "101003");
+//修改条件
+        String whereClause = "id=?";
+//修改添加参数
+        String[] whereArgs = {""};
+//修改
+        db.update("usertable", values, whereClause, whereArgs);
+    }
+
+    private void delete(SQLiteDatabase db) {
+//删除条件
+        String whereClause = "id=?";
+//删除条件参数
+        String[] whereArgs = {String.valueOf(2)};
+//执行删除
+        db.delete("stu_table", whereClause, whereArgs);
     }
 }

@@ -66,6 +66,31 @@
     <string name="addfood_dialog_confirm">添加</string>
     <string name="addfood_dialog_cancel">取消</string>
 
+    <string name="addfood_hint_input">输入添加的数量</string>
+    
+    <string name="addfood_textview_inadequacy">该食材不适合这种保存方式</string>
+    <string name="addfood_textview_storage">该方式，可保存天数：</string>
+
+    <!--
+    食材存放处
+    -->
+    <string-array name="storage_position">
+        <item>常温保存</item>
+        <item>冷藏保存</item>
+        <item>冷冻保存</item>
+    </string-array>
+
+    <!--
+    食材管理计量单位
+    -->
+    <string-array name="measurement_unit">
+        <item>个</item>
+        <item>只</item>
+        <item>克</item>
+        <item>千克</item>
+        <item>毫升</item>
+        <item>升</item>
+    </string-array>
 
 
 </resources>
