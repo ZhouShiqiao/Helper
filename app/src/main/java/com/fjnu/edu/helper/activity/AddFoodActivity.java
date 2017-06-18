@@ -24,6 +24,8 @@ import com.fjnu.edu.helper.adapter.AddFoodGridAdapter;
 import com.fjnu.edu.helper.datebase.DBManager;
 import com.fjnu.edu.helper.food.AddFoodInformation;
 import com.fjnu.edu.helper.food.Food;
+import com.fjnu.edu.helper.food.MyFood;
+import com.fjnu.edu.helper.system.Commonality;
 
 import org.w3c.dom.Text;
 
@@ -102,11 +104,11 @@ public class AddFoodActivity extends AppCompatActivity {
 
         Button confirm = (Button) dialogView.findViewById(R.id.add_food_button_confirm);
         Button cancel = (Button) dialogView.findViewById(R.id.add_food_button_cancel);
-        Spinner units = (Spinner) dialogView.findViewById(R.id.addfood_spinner_unit);
-        Spinner positions = (Spinner) dialogView.findViewById(R.id.addfood_spinner_location);
+        final Spinner units = (Spinner) dialogView.findViewById(R.id.addfood_spinner_unit);
+        final Spinner positions = (Spinner) dialogView.findViewById(R.id.addfood_spinner_location);
         TextView foodname = (TextView) dialogView.findViewById(R.id.addfood_textview_foodname);
         final TextView storageinf = (TextView) dialogView.findViewById(R.id.addfood_textview_storageinformaiton);
-        EditText quantity = (EditText) dialogView.findViewById(R.id.addfood_edit_amount);
+        final EditText quantity = (EditText) dialogView.findViewById(R.id.addfood_edit_amount);
 
         dialog.show();
 
@@ -118,6 +120,15 @@ public class AddFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (storagetime > 0) {
+                    mgr.InsertMyfood(new MyFood(food.getMno(),
+                            food.getName(),
+                            positions.getSelectedItem().toString(),
+                            Commonality.getCurrentTime(),
+                            Double.valueOf(quantity.getText().toString()),
+                            units.getSelectedItem().toString(),
+                            null,
+                            storagetime));
+                    Toast.makeText(AddFoodActivity.this,getString(R.string.addfood_textview_addsucceeed),Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 } else {
                     Toast.makeText(AddFoodActivity.this, getString(R.string.addfood_textview_inadequacy), Toast.LENGTH_SHORT).show();
@@ -149,13 +160,13 @@ public class AddFoodActivity extends AppCompatActivity {
                 String[] positions = getResources().getStringArray(R.array.storage_position);
                 AddFoodActivity.this.position = positions[position];
                 switch (position) {
-                    case 1:
+                    case 0:
                         storagetime = food.getStorage3();
                         break;
-                    case 2:
+                    case 1:
                         storagetime = food.getStorage1();
                         break;
-                    case 3:
+                    case 2:
                         storagetime = food.getStorage2();
                         break;
                 }

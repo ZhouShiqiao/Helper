@@ -11,11 +11,18 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.fjnu.edu.helper.R;
 import com.fjnu.edu.helper.activity.AddFoodActivity;
+import com.fjnu.edu.helper.adapter.FoodListAdapter;
+import com.fjnu.edu.helper.datebase.DBManager;
+import com.fjnu.edu.helper.food.MyFood;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ZhouShiqiao on 2017/5/29 0029.
@@ -24,8 +31,14 @@ import com.fjnu.edu.helper.activity.AddFoodActivity;
 public class FoodMainFragment extends Fragment {
     private Context context;
     private View view;
+    private ListView foodlist;
 
     private FloatingActionButton editbutton;
+
+    private ArrayList<MyFood> list;
+    private FoodListAdapter adapter;
+
+    private DBManager mgr;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +47,16 @@ public class FoodMainFragment extends Fragment {
 
     public void onResume() {
         super.onResume();
-
+        list=mgr.QueryMyFood();
+        adapter=new FoodListAdapter(context,list);
+        foodlist.setAdapter(adapter);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         context = getActivity();
         view = inflater.inflate(R.layout.fragment_food_main, container, false);
+        mgr= new DBManager(context);
         findview();
         initview();
         return view;
@@ -48,6 +64,7 @@ public class FoodMainFragment extends Fragment {
 
     private void findview() {
         editbutton = (FloatingActionButton) view.findViewById(R.id.foodmain_button_edit);
+        foodlist=(ListView)view.findViewById(R.id.foodmain_listview_myfood);
     }
 
     private void initview() {

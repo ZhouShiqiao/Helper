@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fjnu.edu.helper.R;
+import com.fjnu.edu.helper.datebase.MySQLHelper;
+import com.fjnu.edu.helper.datebase.MySQLManager;
 import com.fjnu.edu.helper.fragment.FoodMainFragment;
 import com.fjnu.edu.helper.fragment.NoteMainFragmnet;
 import com.fjnu.edu.helper.fragment.RecipeMainFragment;
@@ -43,6 +45,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findview();
         initview();
         setDefaultFragment();
+        MySQLHelper.getConn();
+        new Thread() {
+            public void run() {
+                MySQLManager.recommend(null, 0);
+            }
+        }.start();
+
     }
 
     private void findview() {

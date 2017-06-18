@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by ZhouShiqiao on 2017/6/7 0007.
@@ -24,5 +26,11 @@ public class Commonality {
             e.printStackTrace();
         }
         return image;
+    }
+    public static String getCurrentTime(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date curDate = new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+        return str;
     }
 }

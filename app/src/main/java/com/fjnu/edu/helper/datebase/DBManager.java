@@ -45,7 +45,8 @@ public class DBManager {
         cv.put("Quantity", food.getResidue());
         cv.put("Position", food.getPosition());
         cv.put("Unit", food.getUnit());
-        cv.put("InputDate", "datetime('now', 'localtime'))");
+        cv.put("InputDate", food.getAddtime());
+        cv.put("storagetime",food.getStoragetime());
         db.insert("myfood", null, cv);
     }
 
@@ -69,25 +70,53 @@ public class DBManager {
         return food;
     }
 
-    private void update(SQLiteDatabase db) {
-//实例化内容值 ContentValues values = new ContentValues();
-//在values中添加内容
-        ContentValues values = new ContentValues();
-        values.put("snumber", "101003");
-//修改条件
-        String whereClause = "id=?";
-//修改添加参数
-        String[] whereArgs = {""};
-//修改
-        db.update("usertable", values, whereClause, whereArgs);
+    public ArrayList<MyFood> QueryMyFood() {
+        ArrayList<MyFood> list = new ArrayList<MyFood>();
+        String sql = "select myfood.No as id," +
+                "food.materialName as name," +
+                "myfood.quantity as quantity," +
+                "myfood.unit as unit," +
+                "myfood.position as position," +
+                "myfood.InputDate as inputdate, " +
+                "food.image as image, " +
+                "myfood.storagetime as storagetime " +
+                "from food , myfood where myfood.No = food.mno " +
+                "order by myfood.No asc ,myfood.Inputdate asc";
+        Cursor c = db.rawQuery(sql, null);
+        MyFood food = null;
+        while (c.moveToNext()) {
+            String id = c.getString(c.getColumnIndex("id"));
+            String name = c.getString(c.getColumnIndex("name"));
+            double quantity = c.getDouble(c.getColumnIndex("quantity"));
+            String unit = c.getString(c.getColumnIndex("unit"));
+            String position = c.getString(c.getColumnIndex("position"));
+            String inputdate = c.getString(c.getColumnIndex("inputdate"));
+            String image = c.getString(c.getColumnIndex("image"));
+            int storagetime = c.getInt(c.getColumnIndex("storagetime"));
+            food = new MyFood(id, name, position, inputdate, quantity, unit, image, storagetime);
+            list.add(food);
+        }
+        return list;
     }
 
-    private void delete(SQLiteDatabase db) {
-//删除条件
-        String whereClause = "id=?";
-//删除条件参数
-        String[] whereArgs = {String.valueOf(2)};
-//执行删除
-        db.delete("stu_table", whereClause, whereArgs);
+    public void DeleteMyFood(String date){
+        String sql = null;
+        sql = "delete from myfood where InputDate = '"+date+"'";
+        db.execSQL(sql);
+    }
+
+    public void update(String table, ContentValues value, String where, String[] args) {
+        db.update(table, value, where, args);
+    }
+
+    public void delete(String table, String where, String[] args) {
+        db.delete(table, where, args);
+    }
+
+    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs,
+                        String groupBy, String having, String orderBy, String limit) {
+        Cursor c = null;
+
+        return c;
     }
 }

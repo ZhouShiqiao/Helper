@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fjnu.edu.helper">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.AddFoodActivity"></activity>
+        <activity android:name=".activity.AddFoodActivity" />
+        <activity android:name=".activity.RecipeActivity"></activity>
     </application>
 
 </manifest>

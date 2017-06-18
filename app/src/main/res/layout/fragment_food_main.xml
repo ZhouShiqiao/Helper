@@ -18,7 +18,8 @@
             android:layout_alignParentRight="true"
             android:id="@+id/main_button_information"
             android:text="@string/foodmain_button_information"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:visibility="gone"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -26,7 +27,8 @@
             android:layout_alignParentLeft="true"
             android:id="@+id/main_button_QRcode"
             android:text="@string/foodmain_button_QRcode"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:visibility="gone"/>
         <SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,35 +39,21 @@
             android:gravity="center|left"
             android:background="@color/white"
             android:iconifiedByDefault="false"
-            />
+            android:visibility="gone"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="@string/foodmain_textview_title"
+            android:textSize="17dp"
+            android:textColor="@color/black"/>
     </RelativeLayout>
-    <LinearLayout
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
         android:layout_below="@+id/foodmain_title_layout"
-        android:visibility="gone">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/foodmain_textview_myfood"
-            android:text="@string/foodmain_textview_myfood"
-            android:textSize="16dp"
-            android:padding="10dp"
-            android:gravity="center"
-            android:background="@drawable/choose_outline_noright"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/foodmain_textview_recommend"
-            android:text="@string/foodmain_textview_recommend"
-            android:textSize="16dp"
-            android:padding="10dp"
-            android:gravity="center"
-            android:background="@drawable/choose_outline"/>
-    </LinearLayout>
+        android:id="@+id/foodmain_listview_myfood"/>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/foodmain_button_edit"
         android:layout_width="wrap_content"
