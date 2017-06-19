@@ -24,6 +24,8 @@ import java.util.ArrayList;
 
 public class MySQLManager {
     public static ArrayList<SimpleRecipe> Query(String name) {
+        ArrayList<SimpleRecipe> list = new ArrayList<SimpleRecipe>();
+
         return null;
     }
 
