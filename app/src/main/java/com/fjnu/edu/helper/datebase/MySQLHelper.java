@@ -9,21 +9,23 @@ import java.sql.SQLException;
  */
 
 public class MySQLHelper {
-    private static  String url = "jdbc:mysql://139.199.174.96:3306/testDB";
-    private static  String name = "com.mysql.jdbc.Driver";
-    private static  String user = "lin";
-    private static  String password = "lin";
+    private static final String REMOTE_IP = "139.199.174.96:3306";
+    private static final String URL = "jdbc:mysql://" + REMOTE_IP + "/testDB";
+    private static final String USER = "lin";
+    private static final String PASSWORD = "lin";
 
-    public static Connection getConn() {
+    public static Connection openConnection() {
         Connection conn = null;
         try {
-            Class.forName(name);
-            conn = DriverManager.getConnection(url, user, password);
+            final String DRIVER_NAME = "com.mysql.jdbc.Driver";
+            Class.forName(DRIVER_NAME);
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
+            conn = null;
+        } catch (SQLException e) {
+            conn = null;
         }
+
         return conn;
     }
 }

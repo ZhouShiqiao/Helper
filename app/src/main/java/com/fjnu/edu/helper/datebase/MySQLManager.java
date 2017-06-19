@@ -34,25 +34,35 @@ public class MySQLManager {
     public static Recipe QueryDetail(String id) {
         return null;
     }
-    public static void recommend(String[] id,int numbers) {
+
+    public static String[] recommend(String[] id,int numbers) {
+        String items = id[0];
+        for(int i=1;i<id.length;i++){
+            items=items+"-"+id[i];
+        }
         try {
-            String str = "http://139.199.174.96:5000/predict?item=56753-282252-291604-54405-984231&num=5";
-            URL url = new URL(str);//创建URL
-            URLConnection conn = url.openConnection();//打开连接对象
+            String str = "http://139.199.174.96:5000/predict?item="+items+"&num="+numbers;
+            URL url = new URL(str);
+            URLConnection conn = url.openConnection();
             HttpURLConnection httpConn = (HttpURLConnection) conn;
-            httpConn.setRequestMethod("GET");//get请求
+            httpConn.setRequestMethod("GET");
             httpConn.connect();
-            if (httpConn.getResponseCode() == HttpURLConnection.HTTP_OK) {//如果正常返回
+            if (httpConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 InputStream in = httpConn.getInputStream();
-                System.out.println(readString(in));
-            }
+                String list = readString(in);
+                list = list.replace("[", "");
+                list = list.replace("]", "");
+                String[] sourceStrArray = list.split(", ");
+                return sourceStrArray;
+            } else
+                return null;
 
         } catch (IOException e) {
-
-        }
-        catch(Exception e){
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
     private static String readString(InputStream in) throws Exception {
         byte[]data = new byte[1024];

@@ -11,18 +11,17 @@ import java.sql.Statement;
  */
 
 public class Util {
-    private static final String REMOTE_IP = "192.168.1.102";
-    private static final String URL = "jdbc:mysql://" + REMOTE_IP + "/mydb";
-    private static final String USER = "mark";
-    private static final String PASSWORD = "123456";
+    private static final String REMOTE_IP = "139.199.174.96:3306";
+    private static final String URL = "jdbc:mysql://" + REMOTE_IP + "/testDB";
+    private static final String USER = "lin";
+    private static final String PASSWORD = "lin";
 
-    public static Connection openConnection(String url, String user,
-                                            String password) {
+    public static Connection openConnection() {
         Connection conn = null;
         try {
             final String DRIVER_NAME = "com.mysql.jdbc.Driver";
             Class.forName(DRIVER_NAME);
-            conn = DriverManager.getConnection(url, user, password);
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
             conn = null;
         } catch (SQLException e) {
@@ -32,46 +31,6 @@ public class Util {
         return conn;
     }
 
-    public static void query(Connection conn, String sql) {
-
-        if (conn == null) {
-            return;
-        }
-
-        Statement statement = null;
-        ResultSet result = null;
-
-        try {
-            statement = conn.createStatement();
-            result = statement.executeQuery(sql);
-            if (result != null && result.first()) {
-                int idColumnIndex = result.findColumn("id");
-                int nameColumnIndex = result.findColumn("name");
-                System.out.println("id\t\t" + "name");
-                while (!result.isAfterLast()) {
-                    System.out.print(result.getString(idColumnIndex) + "\t\t");
-                    System.out.println(result.getString(nameColumnIndex));
-                    result.next();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (result != null) {
-                    result.close();
-                    result = null;
-                }
-                if (statement != null) {
-                    statement.close();
-                    statement = null;
-                }
-
-            } catch (SQLException sqle) {
-
-            }
-        }
-    }
 
     public static boolean execSQL(Connection conn, String sql) {
         boolean execResult = false;
